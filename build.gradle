@@ -1,0 +1,35 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.15.5'
+    id 'java'
+}
+
+version = '2.0.0+26.2'
+group = 'com.homies'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.shedaniel.me/' }
+    maven { url 'https://maven.terraformersmc.com/' }
+}
+
+dependencies {
+    minecraft  "com.mojang:minecraft:26.2"
+    implementation "net.fabricmc:fabric-loader:0.19.1"
+    implementation "net.fabricmc.fabric-api:fabric-api:0.153.0+26.2"
+
+    // Cloth Config + Mod Menu
+    implementation "me.shedaniel.cloth:cloth-config-fabric:26.2.155"
+    compileOnly "com.terraformersmc:modmenu:20.0.1"
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(25) }
+    withSourcesJar()
+}
+
+tasks.jar { archiveBaseName = 'TickAlign-Client' }
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}

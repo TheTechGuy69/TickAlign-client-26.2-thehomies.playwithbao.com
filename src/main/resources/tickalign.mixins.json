@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "com.homies.tickalign.client.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": ["ConnectionMixin"],
+  "injectors": { "defaultRequire": 1 }
+}
